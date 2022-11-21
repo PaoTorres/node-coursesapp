@@ -34,7 +34,7 @@ const Users = db.define("users",
     hooks: {
         beforeCreate: (user, options) => {
             const { password } = user;
-            const hash = bcrypt.hastSync(password, 8);
+            const hash = bcrypt.hashSync(password, 8);
             user.password = hash;
 
         }

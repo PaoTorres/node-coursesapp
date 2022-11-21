@@ -17,7 +17,7 @@ db.authenticate()
  .then(()=>console.log("******* AUTENTICACIÓN a BD exitosa *******"))
  .catch((error)=>console.log(error));
 
- db.sync({force: true})
+ db.sync({force: false})
  .then(()=>console.log("******* SINCRONIZACIÓN de la BD exitosa ******* "))
  .catch((error)=>console.log(`******Mi middleware de error:******** ${error}`));
 
