@@ -41,8 +41,8 @@ Courses.hasMany(UsersCourses, {foreignKey: 'course_id'});
 
 
 //f. 1->* Un usuario tiene muchos UsersCourses (inscripciones). usersCourses es el que tiene la FK que llama a los usuarios.
-UsersCourses.belongsTo(Users, {as:'student', foreignKey:'user_id'});
-Users.hasMany(UsersCourses, {as: 'registers', foreignKey:'user_id'});
+UsersCourses.belongsTo(Users, {as:'matriculas', foreignKey:'user_id'});
+Users.hasMany(UsersCourses, {foreignKey:'user_id'});
 
 }
 

@@ -32,21 +32,18 @@ const Users = db.define("users",
         }
     }, {
     hooks: {
-        beforeUpdate: (user, options) => {
-            console.log("Antes de ACTUALIZAR usuario**********");
-            const { password } = user;
-            console.log(password);
-            const hash = bcrypt.hashSync(password, 8);
-            user.password = hash;
-            console.log(hash);
-        },
-         beforeCreate: (user, options) => {
-            console.log("Antes de crear usuario**********");
+        beforeCreate: (user, options) => {
             const { password } = user;
             const hash = bcrypt.hashSync(password, 8);
             user.password = hash;
         },
+        beforeSave: (user, options) => {
+            const { password } = user;
+            const hash = bcrypt.hashSync(password, 8);
+            user.password = hash;
+        }
     }
+
 });
 
 module.exports = Users;
