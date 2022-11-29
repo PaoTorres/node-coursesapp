@@ -9,7 +9,7 @@ const getAllCourses= async(req, res, next) => {
         next({
             status: 400,
             errorContent: error,
-            message: "Course not find"
+            message: "Course not found."
         })
     }
 };
@@ -23,7 +23,7 @@ const getAllInfCourses = async(req, res, next) => {
             next({
                 status: 400,
                 errorContent: "",
-                message: "All Inf Courses not find"
+                message: "Courses information not found."
             });
             
         }
@@ -31,7 +31,7 @@ const getAllInfCourses = async(req, res, next) => {
         next({
             status: 400,
             errorContent: error,
-            message: "Inf Courses not find"
+            message: "Courses information not found."
         });
     }
 };
@@ -56,34 +56,21 @@ const updateCourse = async(req, res, next) => {
         const { id } = req.params;
         const dataUpdate = req.body;
         const result = await CoursesServices.update(dataUpdate, id);
-        res.json(result);
+        res.json({message: `Description of course id: ${id} updated.`});
       } catch (error) {
           next({
               status: 418,
               errorContent: "",
-              message: "you do not meet all the required fields",
+              message: "You do not meet all the required fields.",
           });
       }
 };
 
-const createVideo = async(req, res, next) => {
-    try {
-        const newVideo = req.body;
-        const result = await CoursesServices.createVid(newVideo);
-        res.status(201).json(result);
-    } catch (error) {
-        next({
-            status: 418,
-            errorContent: error,
-            message: "You do not meet all the required fields",
-          });
-    }
-}
+
 
 module.exports = {
     getAllCourses,
     getAllInfCourses,
     createCourse,
     updateCourse,
-    createVideo, 
 }

@@ -1,30 +1,25 @@
-const {getUserById, createUser, updateUser, getUserCourses, addCourseToUser} = require('./users.controllers');
-const { getAllCourses, getAllInfCourses, createCourse, updateCourse, createVideo} = require('./courses.controllers');
-const { createCategories } = require('./categories.controllers');
-
-//const {userRegister, getAllUsers} = require('./users.controllers');
-/*
-const  {userLogin} = require('./auth.controllers');
-const  {getUserConversations} = require('./conversations.controllers');
-const {getMessagesByConversation} = require('./messages.controllers');
-*/
+const {getUserById, getUserCourses, createUser, updateUser,  addCourseToUser} = require('./users.controllers');
+const { getAllCourses, getAllInfCourses, createCourse, updateCourse} = require('./courses.controllers');
+const {createVideo, deleteVideo} = require('./videos.controllers');
+const { createCategory, deleteCategory } = require('./categories.controllers');
 
 module.exports = {
     getUserById,
+    getUserCourses,
     createUser,
     updateUser,
-    getUserCourses,
     addCourseToUser,
+    
     getAllCourses,
     getAllInfCourses,
     createCourse,
     updateCourse,
+
     createVideo,
-    createCategories,
-    // userRegister,
-   /* userLogin,
-    getAllUsers,
-    getUserConversations,
-    getMessagesByConversation,*/
+    deleteVideo,
+
+    createCategory,
+    deleteCategory,
+
 };
 

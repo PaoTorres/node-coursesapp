@@ -68,7 +68,7 @@ const usersCourses = [
   {userId:11, courseId:5},
 ];
 
-db.sync({ force: false }).then(() => {
+db.sync({ force: true }).then(() => {
   console.log("Iniciando plantación");
 
   users.forEach(async (item) => await Users.create(item));

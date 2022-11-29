@@ -1,6 +1,7 @@
 const { Courses, Categories, Videos } = require("../models");
 
 class CoursesServices{
+
     static async getAll() {
         try { 
             const result = await Courses.findAll({
@@ -11,18 +12,18 @@ class CoursesServices{
             throw error;
         }
     };
+
     static async getInf(){
         try {
             const result = await Courses.findAll({
-                attributes: ["title","description"],
+                //attributes: ["title","description"],
                 include: {
                     model: Categories,
-                    as: "course",
+                    as: "category",
                     attributes: ["name"],
                 },
                 include: {
                     model: Videos,
-                    as: "coursevid",
                     attributes: ["title", "url"]
                 }
             });
@@ -31,6 +32,7 @@ class CoursesServices{
             throw error;
         }
     };
+    
     static async create(newCourse){
         try {
             const result = await Courses.create(newCourse);
@@ -50,14 +52,7 @@ class CoursesServices{
             throw error;
         }
     };
-    static async createVid(newVideo) {
-        try {
-            const result = await Videos.create(newVideo);
-            return result;
-        } catch (error) {
-            throw error;
-        }
-    }
+
 };
 
 module.exports = CoursesServices;

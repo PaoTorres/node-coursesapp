@@ -1,10 +1,10 @@
-const { CategoriesServices} = require("../services");
+const { VideosServices} = require("../services");
 
-const createCategory = async(req, res, next) => {
+const createVideo = async(req, res, next) => {
     try {
-        
-        const name = req.body;
-        const result = await CategoriesServices.create(name);
+        const newVideo = req.body;
+        console.log(`Entró a controlador newVideo ${newVideo}`);
+        const result = await VideosServices.create(newVideo);
         res.status(201).json(result);
     } catch (error) {
         next({
@@ -13,34 +13,34 @@ const createCategory = async(req, res, next) => {
             message: "You do not meet all the required fields.",
           });
     }
-};
+}
 
 
-const deleteCategory = async(req, res, next) => {
+const deleteVideo = async(req, res, next) => {
     try {
         
         const {id} = req.params;
-        const result = await CategoriesServices.delete(id);
+        const result = await VideosServices.delete(id);
         if(result){  
-            res.status(200).json({message: `Category ${id} deleted.`});
+            res.status(200).json({message: `Video ${id} deleted.`});
         }
         else {
             next({
                 status: 418,
                 errorContent: error,
-                message: `id ${id} not found`,
+                message: `Video id ${id} not found.`,
             });
         }
     } catch (error) {
         next({
             status: 418,
             errorContent: error,
-            message: `Category not found`,
+            message: `Video not found.`,
           });
     }
 };
 
 module.exports = {
-    createCategory, 
-    deleteCategory,
+    createVideo, 
+    deleteVideo,
 };

@@ -1,21 +1,20 @@
-const { Categories } = require("../models");
+const { Videos } = require("../models");
 
-class CategoriesServices{
+class VideosServices{
 
-    static async create(category) {
+    static async create(newVideo) {
         try {
-            const result = await Categories.create(category);
+            const result = await Videos.create(newVideo);
             return result;
         } catch (error) {
             throw error;
         }
     }
 
-
     static async delete(id)
     {
        try{
-             const result =  await Categories.destroy({
+             const result =  await Videos.destroy({
                     where: { id }
              });
              return result;
@@ -28,7 +27,4 @@ class CategoriesServices{
 
 }
 
-
-
-
-module.exports = CategoriesServices;
+module.exports = VideosServices;

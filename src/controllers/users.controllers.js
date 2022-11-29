@@ -19,7 +19,7 @@ const getUserById = async(req, res, next)=>{
     next({
      status:400,
      errorContent: error,
-     message: 'User not find'   
+     message: 'User not found.'   
     });
  }
 };
@@ -42,6 +42,7 @@ const createUser = async (req, res, next)=>{
 const addCourseToUser = async (req, res, next)=>{
     try{
         const {id, idcourse} = req.params;
+        console.log (`Entró al addCourseToUser, id: ${id} idcourse: ${idcourse}`);
         const result = await UsersServices.addCourse(id, idcourse);
         res.status(201).json(result);
     }catch(error){

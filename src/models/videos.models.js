@@ -1,6 +1,5 @@
 const db = require("../utils/database");
 const { DataTypes } = require("sequelize");
-//const {Courses} = require('./index.js')
 const Courses = require("./courses.models");
 
 const Videos = db.define("videos",
